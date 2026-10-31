@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Denials: The Claim That Comes Back | hospitaldenial.com</title>
+<meta name="description" content="Hospital Denials: The Claim That Comes Back — aggregated public figures with sources, trend indicators, and methodology.">
+<link rel="canonical" href="https://hospitaldenial.com/market-data">
+<meta property="og:title" content="Hospital Denials: The Claim That Comes Back | hospitaldenial.com">
+<meta property="og:description" content="Hospital Denials: The Claim That Comes Back — aggregated public figures with sources, trend indicators, and methodology.">
+<meta property="og:url" content="https://hospitaldenial.com/market-data">
+<meta property="og:type" content="website">
+<style>
+:root{--slate:#1e293b;--steel:#334155;--clinical:#0ea5e9;--paper:#f1f5f9;--ink:#0f172a;--muted:#64748b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.65}
+.mono{font-family:'IBM Plex Mono',monospace}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;background:rgba(241,245,249,.94);backdrop-filter:blur(14px);border-bottom:1px solid #cbd5e1}
+nav .brand{font-weight:700;font-size:15px;letter-spacing:.02em}
+nav .brand span{color:var(--clinical)}
+nav .sys{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em}
+nav a.cta{background:var(--slate);color:#fff;font-weight:600;font-size:13px;padding:11px 24px;text-decoration:none;transition:.3s;font-family:'IBM Plex Mono',monospace}
+nav a.cta:hover{background:var(--clinical)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--slate);color:#fff}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(30,41,59,.92) 15%,rgba(30,41,59,.62) 55%,rgba(30,41,59,.42))}
+.hero-inner{position:relative;z-index:2;padding:120px 5vw 80px;max-width:1200px}
+.status{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7dd3fc;margin-bottom:22px}
+.status i{width:9px;height:9px;border-radius:50%;background:#22c55e;animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.3}}
+h1{font-size:clamp(46px,7vw,100px);font-weight:700;line-height:1;letter-spacing:-.025em}
+h1 .accent{color:var(--clinical)}
+.hero-sub{max-width:600px;margin-top:24px;font-size:18px;color:#94a3b8}
+.hero-price{margin-top:34px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.price-tag{font-family:'IBM Plex Mono',monospace;font-size:40px;font-weight:600}
+.price-tag small{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.btn{display:inline-block;background:var(--clinical);color:#fff;font-weight:600;font-size:15px;padding:16px 42px;text-decoration:none;transition:.3s;font-family:'IBM Plex Mono',monospace}
+.btn:hover{background:#fff;color:var(--slate);transform:translateY(-3px)}
+.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn.ghost:hover{border-color:var(--clinical);color:var(--clinical)}
+section{padding:128px 5vw}
+.wrap{max-width:1200px;margin:0 auto}
+.sec-label{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--clinical);margin-bottom:16px}
+h2{font-size:clamp(32px,4.4vw,60px);font-weight:700;line-height:1.06;letter-spacing:-.02em;margin-bottom:26px}
+.lede{font-size:18px;max-width:700px;color:#475569}
+.record{background:#fff;border:1px solid #cbd5e1}
+.record-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;padding-bottom:20px;margin-bottom:40px}
+.record-head .mono{font-size:12px;color:var(--muted);letter-spacing:.1em}
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:54px}
+.two-col p{font-size:16px;color:#475569;margin-bottom:18px}
+.data-panel{background:var(--slate);color:#fff;padding:40px;font-family:'IBM Plex Mono',monospace}
+.data-panel .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
+.data-panel .row:last-child{border:none}
+.data-panel .row b{color:var(--clinical)}
+.data-panel .hdr{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#64748b;margin-bottom:12px}
+.chart-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}
+.chart{background:#fff;border:1px solid #e2e8f0;padding:28px;text-align:center}
+.chart b{display:block;font-family:'IBM Plex Mono',monospace;font-size:38px;color:var(--slate)}
+.chart span{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.ops{background:var(--slate);color:#fff}
+.op-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
+.op{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:38px 32px;transition:.3s}
+.op:hover{border-color:var(--clinical);transform:translateY(-6px)}
+.op .mono{font-size:11px;color:var(--clinical);letter-spacing:.2em;margin-bottom:14px;display:block}
+.op h3{font-size:19px;font-weight:600;margin-bottom:12px}
+.op p{font-size:14.5px;color:#94a3b8}
+.cta-sec{text-align:center;background:#fff}
+.cta-sec .lede{margin:0 auto 38px}
+.cta-sec .hero-price{justify-content:center}
+footer{padding:54px 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;background:var(--slate);color:#94a3b8}
+footer p{font-size:13px}
+footer a{color:var(--clinical);text-decoration:none}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.2,.8,.2,1),transform .85s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:860px){.two-col,.chart-strip,.op-grid{grid-template-columns:1fr}h1{font-size:48px}}
+
+.data-wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
+.data-wrap h1,.data-wrap h2{overflow-wrap:break-word;word-break:break-word}
+.updated{font-weight:700}
+table.data{width:100%;border-collapse:collapse;margin:20px 0;table-layout:fixed}
+table.data th,table.data td{border:1px solid #c9a86a;padding:10px 8px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-break:break-word;font-size:15px}
+table.data td a{overflow-wrap:break-word;word-break:break-all}
+@media(max-width:480px){table.data,table.data tbody,table.data tr,table.data td{display:block;width:100%;box-sizing:border-box}table.data thead{display:none}table.data tr{margin-bottom:14px;border:1px solid #c9a86a}table.data td{border:none;border-bottom:1px solid #ddd}.data-wrap{padding:16px 12px}}
+.cta a{display:inline-block;padding:14px 22px;min-height:44px;line-height:1.4}
+
+/* Phase 1 assembly 2026-10-31 */
+.toc{border:1px solid currentColor;padding:18px 22px;margin:0 0 32px;max-width:720px}.toc-title{font-weight:600;margin-bottom:8px}.toc ul{margin:0;padding-left:20px}.toc li{margin:4px 0}.toc a{color:inherit}
+@media (max-width:900px){h1{font-size:clamp(44px,11vw,72px)!important}}
+
+/* Phase 1 assembly 2026-10-31 — nav solid correction */
+@media (max-width:900px){nav{background:rgb(241,245,249)!important;backdrop-filter:none!important}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "hospitaldenial.com — Hospital claim denial rates and costs",
+  "description": "Hospital Denials: The Claim That Comes Back. Aggregated public estimates for information only.",
+  "temporalCoverage": "2019/2025",
+  "dateModified": "2026-10-25",
+  "creator": {
+    "@type": "Organization",
+    "name": "Prime Domain Capital"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Prime Domain Capital"
+  },
+  "url": "https://hospitaldenial.com/market-data",
+  "sameAs": [
+    "https://www.enjoincdi.com/blog/hospital-denial-rates-benchmarks-trends-what-the-data-shows-2026/",
+    "https://www.healthcarefinancenews.com/news/hospitals-net-revenue-leakage-increases-25-due-denied-claims",
+    "https://www.healthcarebusinesstoday.com/benchmark-report-revenue-integrity/",
+    "https://www.aha.org/system/files/media/file/2024/11/Environmental-Scan-2025.pdf",
+    "https://www.mondaq.com/unitedstates/healthcare/1196282/medicare-advantage-oig-report-finds-improper-denials?type=related"
+  ]
+}
+</script>
+<style>
+/* Mobile rendering fix 2026-10-31: domain H1 lines, stacked nav, header clearance */
+@media (max-width:900px){
+main h1{overflow-wrap:normal!important;word-break:normal!important}
+nav:not(.toc){flex-direction:column!important;align-items:flex-start!important;gap:4px!important;padding-top:16px!important;padding-bottom:16px!important;padding-left:20px!important;padding-right:20px!important}
+.topbar{flex-direction:column!important;align-items:flex-start!important;gap:4px!important;padding-top:16px!important;padding-bottom:16px!important;padding-left:20px!important;padding-right:20px!important}
+main{padding-top:120px!important}
+main h1{font-size:clamp(30px,8.5vw,58px)!important;line-height:1.15!important}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+<video class="hero-video" autoplay muted loop playsinline><source src="video/hero.mp4" type="video/mp4"></source></video>
+<div class="hero-shade"></div>
+<div class="hero-inner">
+<div class="status reveal"><i></i> For Sale · Prime Domain Capital</div>
+<h1 class="reveal">Claim denied.<br><span class="accent">Revenue recovered.</span></h1>
+<p class="hero-sub reveal">HospitalDenial.com is the systems-level name for hospital denial management — where health systems reclaim the 5% of revenue payers hope they abandon.</p>
+<div class="hero-price reveal"><div class="price-tag"><small>Buy Now</small>$7,888</div><a class="btn" href="https://www.afternic.com/domain/hospitaldenial.com">ACQUIRE_DOMAIN</a></div>
+</div>
+</header>
+<main class="data-wrap">
+<p class="updated">Last updated: October 25, 2026</p>
+<h1>Hospital Denials: The Claim That Comes Back</h1>
+<p>A denied claim is not usually a lost claim. Most denied claims are eventually paid, after staff time, appeals, and delay. The cost sits in that gap: an initial denial rate near 12% against a final denial rate under 3%, with tens of billions of dollars leaking out of hospital revenue in between. This page tracks both ends of that gap, because either number alone misleads.</p>
+<nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li><a href="#figures">Figures</a></li><li><a href="#methodology">Methodology</a></li><li><a href="#what-the-numbers-mean">What the numbers mean</a></li><li><a href="#disclaimer">Disclaimer</a></li></ul></nav>
+<h2 id="figures">Figures</h2>
+<table class="data"><thead><tr><th>Figure</th><th>Current figure</th><th>Prior figure</th><th>Trend</th><th>Source</th></tr></thead><tbody>
+<tr><td>Initial denial rate, all claims (Kodiak Solutions, 2,300+ hospitals)</td><td><strong>11.6% (2025)</strong></td><td>11.4% (2024)</td><td>▲ Up</td><td><a href="https://www.enjoincdi.com/blog/hospital-denial-rates-benchmarks-trends-what-the-data-shows-2026/">Kodiak Solutions, State of the Healthcare Revenue Cycle (March 2026), as reported</a></td></tr>
+<tr><td>Final denial rate, median (Kodiak Solutions)</td><td><strong>2.7% (2025)</strong></td><td>2.5% (2024)</td><td>▲ Up</td><td><a href="https://www.healthcarefinancenews.com/news/hospitals-net-revenue-leakage-increases-25-due-denied-claims">Kodiak Solutions, State of the Healthcare Revenue Cycle, as reported by Healthcare Finance News</a></td></tr>
+<tr><td>Clinical initial denial rate (Kodiak Solutions)</td><td><strong>2.6% (2025)</strong></td><td>2.4% (2024)</td><td>▲ Up</td><td><a href="https://www.enjoincdi.com/blog/hospital-denial-rates-benchmarks-trends-what-the-data-shows-2026/">Kodiak Solutions, State of the Healthcare Revenue Cycle (March 2026), as reported</a></td></tr>
+<tr><td>Request-for-information initial denial rate (Kodiak Solutions)</td><td><strong>3.6% (2025)</strong></td><td>3.4% (2024)</td><td>▲ Up</td><td><a href="https://www.enjoincdi.com/blog/hospital-denial-rates-benchmarks-trends-what-the-data-shows-2026/">Kodiak Solutions, State of the Healthcare Revenue Cycle (March 2026), as reported</a></td></tr>
+<tr><td>Net revenue leakage from final denials and uncollected patient balances (Kodiak hospitals)</td><td><strong>More than $48 billion (2025)</strong></td><td>$38.6 billion (2024)</td><td>▲ Up</td><td><a href="https://www.healthcarefinancenews.com/news/hospitals-net-revenue-leakage-increases-25-due-denied-claims">Kodiak Solutions, as reported by Healthcare Finance News</a></td></tr>
+<tr><td>Average denied amount, outpatient setting</td><td><strong>$5,390 (2025)</strong></td><td>$4,730 (2024)</td><td>▲ Up</td><td><a href="https://www.healthcarebusinesstoday.com/benchmark-report-revenue-integrity/">Kodiak Solutions Benchmark Report, as reported</a></td></tr>
+<tr><td>Average denied amount, inpatient setting</td><td><strong>$565 (2025)</strong></td><td>$504 (2024)</td><td>▲ Up</td><td><a href="https://www.healthcarebusinesstoday.com/benchmark-report-revenue-integrity/">Kodiak Solutions Benchmark Report, as reported</a></td></tr>
+<tr><td>Initial denial rate, claims to private payers (AHA / Premier data)</td><td><strong>Nearly 15%</strong></td><td>—</td><td>◆ Baseline (October 2026) — trend tracking starts with the next refresh</td><td><a href="https://www.aha.org/system/files/media/file/2024/11/Environmental-Scan-2025.pdf">American Hospital Association Environmental Scan 2025, citing Premier data</a></td></tr>
+<tr><td>Denied claims already pre-approved via prior authorization (AHA / Premier data)</td><td><strong>About 3% of denied claims</strong></td><td>—</td><td>◆ Baseline (October 2026) — trend tracking starts with the next refresh</td><td><a href="https://www.aha.org/system/files/media/file/2024/11/Environmental-Scan-2025.pdf">American Hospital Association Environmental Scan 2025, citing Premier data</a></td></tr>
+<tr><td>Annual cost to providers of fighting denied claims (AHA)</td><td><strong>$19.7 billion</strong></td><td>—</td><td>◆ Baseline (October 2026) — trend tracking starts with the next refresh</td><td><a href="https://www.aha.org/system/files/media/file/2024/11/Environmental-Scan-2025.pdf">American Hospital Association Environmental Scan 2025</a></td></tr>
+<tr><td>Medicare Advantage prior-authorization denials that met Medicare coverage rules (OIG, June 2019 sample)</td><td><strong>13% (April 2022 report)</strong></td><td>—</td><td>◆ Baseline (October 2026) — trend tracking starts with the next refresh</td><td><a href="https://www.mondaq.com/unitedstates/healthcare/1196282/medicare-advantage-oig-report-finds-improper-denials?type=related">HHS Office of Inspector General, April 2022 report, as summarized</a></td></tr>
+<tr><td>Medicare Advantage payment requests improperly denied (OIG, June 2019 sample)</td><td><strong>18% (April 2022 report)</strong></td><td>—</td><td>◆ Baseline (October 2026) — trend tracking starts with the next refresh</td><td><a href="https://www.mondaq.com/unitedstates/healthcare/1196282/medicare-advantage-oig-report-finds-improper-denials?type=related">HHS OIG Medicare Advantage denials report, as summarized by Mondaq</a></td></tr>
+</tbody></table>
+<h2 id="methodology">Methodology</h2>
+<p>Included: Kodiak Solutions revenue-cycle benchmarking (the largest hospital sample with a published 2024–2025 comparison), American Hospital Association published denial figures, and the HHS Office of Inspector General&#x27;s 2022 audit of Medicare Advantage denials. Excluded: vendor marketing claims without a stated hospital sample; payer-specific denial rates for named insurers, which Kodiak reports in aggregate but not as verified public tables this session; and Change Healthcare denial data, for which no verified public figure was found this session. OIG figures describe a June 2019 sample and are not a current denial rate.</p>
+<h2 id="what-the-numbers-mean">What the numbers mean</h2>
+<p>Read the two Kodiak numbers together and the story changes. An 11.6% initial denial rate sounds like a billing failure; a 2.7% final rate sounds like a solved problem. The truth is the work between them: appeals, rework, and delayed cash, priced by the AHA at $19.7 billion a year in provider cost, with leakage rising 25% in a single year to more than $48 billion. The OIG audit adds the sharper edge — in its sample, 13% of Medicare Advantage prior-authorization denials and 18% of payment denials should not have happened under Medicare&#x27;s own rules. Denials are not only an administrative tax; in a measurable share of cases, they are wrong on the merits.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Figures on this page are aggregated public estimates for information only. They are not investment advice, legal advice, medical advice, or a quote for any specific case, procedure, or purchase. Individual prices vary by location, provider, severity, and contract. Verify any figure against its linked source before relying on it.</p>
+<div class="cta">
+<p><strong>hospitaldenial.com is available for purchase at $7,888.</strong></p>
+<p><a href="https://www.afternic.com/domain/hospitaldenial.com">Buy hospitaldenial.com now — $7,888</a></p>
+<p>Questions: <a href="mailto:info@primedomaincapital.com">info@primedomaincapital.com</a></p>
+</div>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.enjoincdi.com/blog/hospital-denial-rates-benchmarks-trends-what-the-data-shows-2026/">Kodiak Solutions denial benchmarks, as reported</a></li>
+<li><a href="https://www.healthcarefinancenews.com/news/hospitals-net-revenue-leakage-increases-25-due-denied-claims">Healthcare Finance News — Kodiak Solutions revenue leakage report</a></li>
+<li><a href="https://www.healthcarebusinesstoday.com/benchmark-report-revenue-integrity/">Healthcare Business Today — Kodiak Benchmark Report summary</a></li>
+<li><a href="https://www.aha.org/system/files/media/file/2024/11/Environmental-Scan-2025.pdf">American Hospital Association — Environmental Scan 2025 (PDF)</a></li>
+<li><a href="https://www.mondaq.com/unitedstates/healthcare/1196282/medicare-advantage-oig-report-finds-improper-denials?type=related">HHS OIG Medicare Advantage denials report, as summarized by Mondaq</a></li>
+</ul>
+<h2>Changelog</h2>
+<ul><li>October 2026: Initial edition — Kodiak Solutions 2025 denial rates with 2024 comparisons, AHA/Premier private-payer figures, and HHS OIG Medicare Advantage audit findings.</li></ul>
+</main>
+<footer><p>Offered by <strong>Prime Domain Capital</strong> · Private holder of category-defining domains</p><p><a href="mailto:info@primedomaincapital.com">info@primedomaincapital.com</a></p></footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1407571ec8bc45c3a082c91096558135"}'></script>
+<p class="back-home" style="display:block;text-align:center;padding:28px 16px;font-size:15px"><a href="https://hospitaldenial.com/" style="color:inherit">&larr; Back to hospitaldenial.com</a></p>
+</body>
+</html>
